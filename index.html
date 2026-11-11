@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!--OG-->
+<title>archive of days</title>
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="archive of days">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://purinuna.github.io/for-donkey5/cover.jpg">
+<meta property="og:url" content="https://purinuna.github.io/for-donkey5/">
+<!--/OG-->
+<meta name="theme-color" content="#f3f1ea">
+<meta name="robots" content="noindex,nofollow">
+<style>
+@font-face{font-family:"Pretendard";src:url("fonts/PretendardVariable.woff2") format("woff2-variations"),url("fonts/PretendardVariable.woff2") format("woff2");font-weight:45 920;font-style:normal;font-display:swap}
+/* Layout: mobile-first, read top to bottom like a mobile invitation: full-bleed cover, a quote, family letters, then the time-travel gallery (decade masonry, filters by era, person and #tag). */
+:root{
+  --bg:#f3f1ea; --surface:#e9e6dc; --card:#fbfaf6; --ink:#2b2b29; --ink-2:#6d6c66; --line:#d9d5c8;
+  --key:#bfe3a4; --key-ink:#22331a; --key-deep:#5f9b45;
+  --f-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --r:10px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#21211f; --surface:#2b2b29; --card:#30302d; --ink:#efece3; --ink-2:#a6a49b; --line:#3c3c38;
+  --key:#b3dc95; --key-ink:#1d2b16; --key-deep:#a7d68a; color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:15px;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:2px solid var(--key-deep);outline-offset:2px}
+
+.cover{position:relative;background:#1c1c1a;overflow:hidden}
+.cover img{display:block;width:100%;height:min(82vh,128vw);max-height:900px;object-fit:cover;object-position:50% 32%}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.28) 0,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 48%,rgba(0,0,0,.66) 100%);pointer-events:none}
+.cover .over{position:absolute;left:0;right:0;bottom:0;z-index:1;color:#fbf9f3}
+.cover .over .wrap{padding-bottom:28px;display:grid;gap:6px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;display:flex;align-items:center;gap:8px;opacity:.9}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--key)}
+.cover h1{font-weight:800;font-size:clamp(44px,13vw,80px);line-height:1.04;letter-spacing:-.045em;margin:0;text-wrap:balance}
+.cover .sub{font-size:clamp(17px,4.4vw,24px);font-weight:500;margin:0;opacity:.92;white-space:pre-line}
+
+.sec-h{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--ink-2);margin:0}
+.sec-h::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--key)}
+.quote .wrap{padding-top:56px;padding-bottom:56px;display:grid;gap:18px;max-width:640px}
+.quote blockquote{margin:0;position:relative;padding-top:34px}
+.quote blockquote::before{content:"\201C";position:absolute;left:-4px;top:-18px;font-size:76px;line-height:1;font-weight:800;color:var(--key-deep);opacity:.55}
+.quote p{margin:0;font-size:clamp(18px,4.8vw,22px);line-height:1.85;font-weight:500;letter-spacing:-.02em;white-space:pre-line;text-wrap:pretty;word-break:keep-all}
+.quote cite{font-style:normal;font-size:13px;color:var(--ink-2)}
+.family{background:var(--surface)}
+.family .wrap{padding-top:44px;padding-bottom:48px;display:grid;gap:18px}
+.family h2,.gallery-h h2{margin:0;font-size:24px;font-weight:700;letter-spacing:-.03em}
+.letters{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.letters{grid-template-columns:repeat(auto-fit,minmax(0,1fr))}}
+.letter{background:var(--card);border-radius:14px;padding:20px 20px 22px;display:grid;gap:10px;align-content:start;min-width:0}
+.letter .from{font-size:13px;font-weight:700;color:var(--key-deep)}
+.letter .txt{margin:0;font-size:16px;line-height:1.75;white-space:pre-line;word-break:keep-all;overflow-wrap:anywhere}
+.gallery-h .wrap{padding-top:48px;padding-bottom:18px;display:grid;gap:12px}
+.stats{display:flex;gap:22px;font-variant-numeric:tabular-nums}
+.stats div{display:grid;line-height:1.25}
+.stats b{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.stats span{font-size:12px;color:var(--ink-2)}
+
+.strip{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip .wrap{padding-top:10px;padding-bottom:10px;display:grid;gap:8px}
+.row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.row::-webkit-scrollbar{display:none}
+.row .lab{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--ink-2);flex:none;width:34px}
+.chip{flex:none;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 14px;min-height:34px;font-size:14px;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--key);color:var(--key-ink);border-color:var(--key)}
+.chip .n{opacity:.55;margin-left:5px;font-variant-numeric:tabular-nums;font-size:12px}
+
+main .wrap{padding-top:8px;padding-bottom:80px}
+.decade{margin:32px 0 14px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.decade h2{font-size:22px;font-weight:700;letter-spacing:-.03em;margin:0}
+.decade span{color:var(--ink-2);font-size:12px;font-variant-numeric:tabular-nums}
+.grid{display:flex;gap:8px;align-items:flex-start}
+.col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+@media (min-width:600px){.grid{gap:14px}.col{gap:24px}}
+.print{background:none;border:0;padding:0;display:grid;gap:6px;text-align:left;min-width:0;align-content:start}
+.print .ph{position:relative;background:var(--surface);aspect-ratio:var(--ar,4/3);max-width:100%;overflow:hidden;border-radius:8px}
+.print img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+@media (hover:hover){.print:hover img{transform:scale(1.03)}}
+.stamp{position:absolute;left:8px;top:8px;font-size:11px;font-weight:600;background:var(--card);color:var(--ink);border-radius:999px;padding:2px 8px;pointer-events:none;font-variant-numeric:tabular-nums}
+.stamp:empty{display:none}
+.print .cap{font-size:13px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.print .cap:empty{display:none}
+.print .ppl{font-size:12px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:-2px}
+.print .ppl:empty{display:none}
+.empty{max-width:480px;margin:48px auto;display:grid;gap:10px}
+.empty h3{font-size:21px;font-weight:700;letter-spacing:-.03em;margin:0}
+.empty p{margin:0;color:var(--ink-2)}
+footer{color:var(--ink-2);font-size:12px;text-align:center;padding:0 16px calc(32px + env(safe-area-inset-bottom,0px))}
+
+.viewer{position:fixed;inset:0;z-index:30;background:var(--bg);display:grid;grid-template-rows:auto minmax(0,1fr)}
+.vtop{display:flex;align-items:center;gap:2px;padding-top:calc(6px + env(safe-area-inset-top,0px));padding-bottom:6px;border-bottom:1px solid var(--line)}
+.vtop .grow{flex:1;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;text-align:center}
+.ico{border:0;background:transparent;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:20px}
+.ico:hover{background:var(--surface)}
+.vbody{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.post{max-width:640px;margin:0 auto;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+.pimg{position:relative;background:var(--surface);touch-action:pan-y}
+.pimg img{width:100%;max-height:78vh;object-fit:contain;display:block}
+@media (min-width:640px){.post{padding-top:16px}.pimg{border-radius:var(--r);overflow:hidden}}
+.pcap{display:grid;gap:8px;padding-top:14px}
+.pcap .when{font-size:14px;font-weight:700}
+.pcap .when span{font-weight:400;color:var(--ink-2)}
+.pcap .txt{white-space:pre-line;font-size:16px;line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding-top:4px}
+.tags .chip{min-height:30px;padding:4px 12px;font-size:13px;background:var(--card)}
+.tags .chip::before{content:"#";color:var(--key-deep);margin-right:2px;font-weight:700}
+.tags .chip.person::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--key-deep);margin-right:6px;vertical-align:1px}
+.hint{font-size:12px;color:var(--ink-2);margin:12px 0 0}
+</style>
+</head>
+<body>
+<header class="cover">
+  <img id="cover-img" src="cover.jpg" alt="">
+  <div class="over gut"><div class="wrap">
+    <div class="eyebrow">FOR DAD</div>
+    <h1 id="t-title">기억하는 방법</h1>
+    <p class="sub" id="t-sub">지난 시간을 선물할게</p>
+  </div></div>
+</header>
+
+<section class="quote gut" id="quote" hidden><div class="wrap">
+  <blockquote><p id="q-text"></p></blockquote>
+  <cite id="q-src"></cite>
+</div></section>
+
+<section class="family gut" id="family" hidden><div class="wrap">
+  <p class="sec-h">FROM US</p>
+  <h2>가족 한마디</h2>
+  <div class="letters" id="letters"></div>
+</div></section>
+
+<section class="gallery-h gut" id="gallery"><div class="wrap">
+  <p class="sec-h">TIME TRAVEL</p>
+  <h2>시간 여행</h2>
+  <p class="note" id="t-note" hidden></p>
+  <div class="stats" id="t-stats"></div>
+</div></section>
+
+<nav class="strip gut" aria-label="사진 모아보기">
+  <div class="wrap">
+    <div class="row" id="r-decade"></div>
+    <div class="row" id="r-people"></div>
+    <div class="row" id="r-tags"></div>
+  </div>
+</nav>
+
+<main class="gut"><div class="wrap" id="pages"></div></main>
+<footer id="foot"></footer>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="사진 보기">
+  <div class="vtop gut">
+    <button class="ico" id="v-close" aria-label="닫기">✕</button>
+    <button class="ico" id="v-prev" aria-label="이전 사진">‹</button>
+    <span class="grow" id="v-pos"></span>
+    <button class="ico" id="v-next" aria-label="다음 사진">›</button>
+    <span style="width:44px"></span>
+  </div>
+  <div class="vbody" id="v-body"><div class="post">
+    <div class="pimg" id="v-print"><img id="v-img" alt=""></div>
+    <div class="gut">
+      <div class="pcap" id="v-cap"></div>
+      <p class="hint">옆으로 밀면 다음 사진으로 넘어가요</p>
+    </div>
+  </div></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+const A=window.ALBUM||{meta:{},people:[],photos:[]};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const meta=Object.assign({title:"기억하는 방법",subtitle:"",note:"",quote:"",quoteSrc:"",letters:[]},A.meta||{});
+const people=A.people||[];
+const photos=(A.photos||[]).slice().sort((a,b)=>(a.year||9999)-(b.year||9999)||(a.added||0)-(b.added||0));
+const pmap=Object.fromEntries(people.map(p=>[p.id,p.name]));
+const S={fPerson:null,fDecade:null,fTag:null,view:[],idx:-1};
+const decadeOf=y=>y?Math.floor(y/10)*10:null;
+const ratio=p=>p.w&&p.h?Math.min(2.6,Math.max(.45,p.w/p.h)):4/3;
+const thumb=p=>"photos/thumb/"+p.id+".jpg", full=p=>"photos/full/"+p.id+".jpg";
+const colCount=()=>{const w=document.querySelector("main .wrap").clientWidth||innerWidth;return w<600?2:w<900?3:4};
+
+$("t-title").textContent=meta.title;document.title=meta.title;
+$("t-sub").textContent=meta.subtitle||"";$("t-sub").hidden=!meta.subtitle;
+$("t-note").textContent=meta.note||"";$("t-note").hidden=!meta.note;
+if(meta.quote){$("quote").hidden=false;$("q-text").textContent=meta.quote;$("q-src").textContent=meta.quoteSrc||"";$("q-src").hidden=!meta.quoteSrc}
+const letters=(meta.letters||[]).filter(l=>l&&l.text&&l.text.trim());
+if(letters.length){$("family").hidden=false;$("letters").innerHTML=letters.map(l=>`<article class="letter">${l.name?`<span class="from">${esc(l.name)}</span>`:""}<p class="txt">${esc(l.text.trim())}</p></article>`).join("")}
+const coverP=meta.cover&&photos.find(p=>p.id===meta.cover);
+if(coverP)$("cover-img").src=full(coverP);
+$("cover-img").alt=meta.title+" 대문 사진";
+const ys=photos.map(p=>p.year).filter(Boolean);
+$("t-stats").innerHTML=`<div><b>${photos.length.toLocaleString()}</b><span>사진</span></div>`+
+  (ys.length?`<div><b>${Math.min(...ys)}–${String(Math.max(...ys)).slice(2)}</b><span>시간</span></div>`:"")+
+  (people.length?`<div><b>${people.length}</b><span>사람</span></div>`:"");
+$("foot").textContent=meta.footer||"";
+
+function filtered(){return photos.filter(p=>(!S.fPerson||(p.people||[]).includes(S.fPerson))&&(!S.fTag||(p.tags||[]).includes(S.fTag))&&(S.fDecade===null||(S.fDecade==="none"?!p.year:decadeOf(p.year)===S.fDecade)))}
+let lastCols=0;
+function render(){
+  const dc=new Map();let none=0;
+  photos.forEach(p=>{const d=decadeOf(p.year);if(d===null)none++;else dc.set(d,(dc.get(d)||0)+1)});
+  $("r-decade").innerHTML=`<span class="lab">시대</span><button class="chip" data-d="" aria-pressed="${S.fDecade===null}">전체</button>`+
+    [...dc.keys()].sort((a,b)=>a-b).map(d=>`<button class="chip" data-d="${d}" aria-pressed="${S.fDecade===d}">${d}년대<span class="n">${dc.get(d)}</span></button>`).join("")+
+    (none?`<button class="chip" data-d="none" aria-pressed="${S.fDecade==="none"}">연도 미상<span class="n">${none}</span></button>`:"");
+  const pc=new Map();photos.forEach(p=>(p.people||[]).forEach(id=>pc.set(id,(pc.get(id)||0)+1)));
+  const ppl=people.filter(p=>pc.get(p.id)).sort((a,b)=>pc.get(b.id)-pc.get(a.id));
+  $("r-people").hidden=!ppl.length;
+  $("r-people").innerHTML=`<span class="lab">사람</span><button class="chip" data-p="" aria-pressed="${!S.fPerson}">모두</button>`+
+    ppl.map(p=>`<button class="chip" data-p="${esc(p.id)}" aria-pressed="${S.fPerson===p.id}">${esc(p.name)}<span class="n">${pc.get(p.id)}</span></button>`).join("");
+  const tc=new Map();photos.forEach(p=>(p.tags||[]).forEach(t=>tc.set(t,(tc.get(t)||0)+1)));
+  const tl=[...tc.keys()].sort((a,b)=>tc.get(b)-tc.get(a)||a.localeCompare(b,"ko"));
+  $("r-tags").hidden=!tl.length;
+  $("r-tags").innerHTML=`<span class="lab">태그</span><button class="chip" data-t="" aria-pressed="${!S.fTag}">모두</button>`+
+    tl.map(t=>`<button class="chip" data-t="${esc(t)}" aria-pressed="${S.fTag===t}">#${esc(t)}<span class="n">${tc.get(t)}</span></button>`).join("");
+  const pg=$("pages");
+  if(!photos.length){pg.innerHTML=`<div class="empty"><h3>아직 사진이 없어요</h3><p>앨범 편집기로 사진을 추가한 뒤 다시 올려주세요.</p></div>`;return}
+  const list=filtered();S.view=list;
+  const groups=new Map();
+  list.forEach(p=>{const k=decadeOf(p.year);const key=k===null?"none":k;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(p)});
+  const nc=colCount();lastCols=nc;let html="";
+  groups.forEach((arr,k)=>{
+    html+=`<div class="decade"><h2>${k==="none"?"연도 미상":k+"년대"}</h2><span>${arr.length}장</span></div><div class="grid">`;
+    const cols=Array.from({length:nc},()=>({h:0,html:""}));
+    arr.forEach(p=>{
+      const c=cols.reduce((a,b)=>b.h<a.h-1e-6?b:a);
+      const cap=p.caption||p.place||"";const names=(p.people||[]).map(id=>pmap[id]).filter(Boolean).join(", ");
+      c.h+=1/ratio(p)+(cap?.14:0)+(names?.12:0)+.06;
+      c.html+=`<button class="print" data-id="${esc(p.id)}" aria-label="${esc((p.year?p.year+"년 ":"")+(p.caption||"사진"))}">
+        <div class="ph" style="--ar:${ratio(p)}"><img loading="lazy" decoding="async" src="${thumb(p)}" alt=""><span class="stamp">${p.year||""}</span></div>
+        <div class="cap">${esc(cap)}</div><div class="ppl">${esc(names)}</div></button>`;
+    });
+    html+=cols.map(c=>`<div class="col">${c.html}</div>`).join("")+"</div>";
+  });
+  pg.innerHTML=html;
+}
+addEventListener("resize",()=>{if(colCount()!==lastCols)render()});
+document.querySelector(".strip").addEventListener("click",e=>{if(!e.target.closest(".chip"))return;const st=document.querySelector(".strip").getBoundingClientRect();const g=$("pages").getBoundingClientRect();if(g.top<st.bottom-1)window.scrollBy(0,g.top-st.bottom)});
+$("r-decade").addEventListener("click",e=>{const b=e.target.closest("[data-d]");if(!b)return;const v=b.dataset.d;S.fDecade=v===""?null:v==="none"?"none":+v;render()});
+$("r-people").addEventListener("click",e=>{const b=e.target.closest("[data-p]");if(!b)return;S.fPerson=b.dataset.p||null;render()});
+$("r-tags").addEventListener("click",e=>{const b=e.target.closest("[data-t]");if(!b)return;S.fTag=b.dataset.t||null;render()});
+$("pages").addEventListener("click",e=>{const b=e.target.closest(".print");if(!b)return;open(S.view.findIndex(p=>p.id===b.dataset.id))});
+
+function open(i){if(i<0)return;S.idx=i;$("viewer").hidden=false;document.body.style.overflow="hidden";show()}
+function close(){$("viewer").hidden=true;document.body.style.overflow=""}
+function show(){
+  const p=S.view[S.idx];if(!p)return close();
+  $("v-pos").textContent=`${S.idx+1} / ${S.view.length}`;
+  $("v-img").src=full(p);$("v-img").alt=p.caption||"";
+  const names=(p.people||[]).filter(id=>pmap[id]);
+  $("v-cap").innerHTML=(p.year||p.place?`<div class="when">${p.year?p.year+"년":""}${p.place?` <span>${p.year?"· ":""}${esc(p.place)}</span>`:""}</div>`:"")+
+    (p.caption?`<div class="txt">${esc(p.caption)}</div>`:"")+
+    (names.length||(p.tags||[]).length?`<div class="tags">${names.map(id=>`<button class="chip person" data-goto="${esc(id)}">${esc(pmap[id])}</button>`).join("")}${(p.tags||[]).map(t=>`<button class="chip" data-gotag="${esc(t)}">${esc(t)}</button>`).join("")}</div>`:"");
+  $("v-body").scrollTop=0;
+  const nx=S.view[S.idx+1];if(nx){const im=new Image();im.src=full(nx)}
+}
+function step(d){S.idx=(S.idx+d+S.view.length)%S.view.length;show()}
+$("v-close").onclick=close;$("v-prev").onclick=()=>step(-1);$("v-next").onclick=()=>step(1);
+$("v-cap").addEventListener("click",e=>{const b=e.target.closest("[data-goto],[data-gotag]");if(!b)return;
+  if(b.dataset.goto){S.fPerson=b.dataset.goto;S.fTag=null}else{S.fTag=b.dataset.gotag;S.fPerson=null}
+  S.fDecade=null;close();render();$("gallery").scrollIntoView({behavior:"smooth"})});
+addEventListener("keydown",e=>{if($("viewer").hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+let x0=null,y0=0;
+$("v-print").addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+$("v-print").addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)step(dx<0?1:-1)});
+render();
+})();
+</script>
+</body>
+</html>

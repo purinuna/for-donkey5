@@ -1,0 +1,1 @@
+window.ALBUM = {"meta":{"title":"archive of days","subtitle":"","note":"","cover":null,"quote":"사람들이 인생을 '행복한 것'이라고 일컬을 수 있을 만큼 인생이 그렇게 우리 뜻대로 되어 가든 말든 간에, 어쨌든 인생은 그 자체로 이미 좋은 것이 아닌가? 요하네스 프리데만은 이렇게 느꼈으며, 인생을 사랑했다.","quoteSrc":"토마스 만, 「키 작은 프리데만 씨」","letters":[]},"people":[],"photos":[]};
